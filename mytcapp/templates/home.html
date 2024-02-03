@@ -1,0 +1,33 @@
+<!-- mytcapp/templates/mytcapp/home.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Home - My TC App{% endblock %}
+
+{% block content %}
+  <nav>
+    <ul>
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+  </nav>
+
+  <h1>Welcome, {{ user.username }}!</h1>
+  <form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    {{ form.username }}
+    {{ form.reason }}
+    <button type="submit">Submit TC Request</button>
+  </form>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("form#tcForm").on('submit', function () {
+        // Reset the form fields
+        $(this).trigger('reset');
+        return false;
+      });
+    });
+  </script>
+  </script>
+{% endblock %}

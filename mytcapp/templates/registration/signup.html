@@ -1,0 +1,40 @@
+<!-- registration/signup.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - My TC App{% endblock %}
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    
+    {{ form.name.label_tag }}
+    {{ form.name }}
+    <br>
+    
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    <br>
+    
+    {{ form.admission_number.label_tag }}
+    {{ form.admission_number }}
+    <br>
+    
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    <br>
+    
+    {{ form.password1.label_tag }}
+    {{ form.password1 }}
+    <br>
+    
+    {{ form.password2.label_tag }}
+    {{ form.password2 }}
+    <br>
+    
+    <button type="submit">Sign Up</button>
+  </form>
+  
+  <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+{% endblock %}
